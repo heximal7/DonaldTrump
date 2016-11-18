@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <style>
-
 div {
   text-align: justify;
 }
@@ -31,7 +30,8 @@ a {
   
   margin:0;
   padding: 0;
-    background-color: #eeeeca;
+  background: #eeeeca;
+  background-size: 100% 100%;
 }
 
 
@@ -50,6 +50,12 @@ html {
   margin:0;
   padding: 0;
   background-color: #eeeeca;
+}
+.playerStatus {
+  font-size: 2.5vw;
+}
+.actual-status {
+  font-size: 2.4vw;
 }
 .choice {
   color:#21690f;
@@ -112,6 +118,7 @@ html {
 .strike-through {
   color: #666;
 }
+    
 </style>
 <script>
 var score = 0;
@@ -147,7 +154,7 @@ var Script = function(header, prompt, optionA, mapA, scoreA, visitedA, optionB, 
 function start() {
 
   scripts = [new Script("THE NIGHTMARE BEGINS", "You wake up. It's the morning after the election and you seem to have had the <i>craziest</i> dream. Come to think of it, actually it was more of a nightmare. You dreamt Hillary Clinton lost the election. TO TRUMP OF ALL PEOPLE! <i>Absurd!</i>\n\nNevermind. You turn on the news. To your shock you see Rachel Maddow crying. Profusely. After several minutes of wimpering she finally starts to talk.\n\n<i>You're awake by the way. You're not having a terrible, terrible dream. Also you're not dead, you haven't gone to Hell. This is your life now. This is our election now. This is us. This is our country. It's real.</i>\n\nWhat's going on?\n\nSlowly you start piecing it all together...<br><br>", "Did Trump steal the election?", 1, 1, 0),
-    new Script("THE NIGHTMARE BEGINS", "Yes. It would appear that Trump stole America.\n\nYou let that sink in for a moment.\n\n<b>Trump stole America!</b>\n\n This is tragedy and you will not stand for such injustice!\n\nStill you can't help but wonder, <b>how the fuck did he do it?</b><br>", "Maybe it was a fair and honest election where the silent majority finally spoke their mind.", 0, 0, 2, "HE MUST HAVE RIGGED IT!", 2, 2, 1, "IT WAS THE BIGOTS!!", 6, 8, 0),
+    new Script("THE NIGHTMARE BEGINS", "Yes. It would appear that Trump stole America.\n\nYou let that sink in for a moment.\n\n<b>Trump stole America!</b>\n\n This is tragedy and you will not stand for such injustice!\n\n\n<b>Still you can't help but wonder, <b>how the fuck did he do it?</b><br>\n ", "Maybe it was a fair and honest election where the silent majority finally spoke their mind.", 0, 0, 2, "HE MUST HAVE RIGGED IT!", 2, 2, 1, "IT WAS THE BIGOTS!!", 6, 8, 0),
     new Script("THE NIGHTMARE BEGINS", "\nYou rush to the tweet-o-sphere to spread the word: <i>Drumpf's a cheater-cheater-pumpkin-eater!</i>\n\nI mean how else could he win <b>290-222</b> when he's #literallyHitler everybody else was #withHer? It wasn't supposed to be this way!\n\nAfter a dozen more of your <i>heroic</i> tweets your phone starts blowing up with mentions.\n$http://i1253.photobucket.com/albums/hh585/heximal7/twitter1_zpsi1csjfxw.png", "Check in with presumptive Echo Chamber", 3, 3, 0),
     new Script("THE NIGHTMARE BEGINS", "\nIt appears your safespace has been taken over by the Demagogue Frog and his xenophobic cult followers. People aren't agreeing with you! Oh no!\n\nYou feel it. You're starting to lose motor control. Arms flopping wildly. Neck twitching. You're becoming #triggered!\n\nIf you don't do something soon, you're gonna turn into the next Trigglypuff and then you'll be nothing more than another internet meme!\n\nWhat do you do?$http://i1253.photobucket.com/albums/hh585/heximal7/pepeFrogGuy_zpssmfhxzq4.png", "Eat some icecream.", 4, 4, 0, "\nFind someone to agree with you.", 5, 5, 0),
     new Script("THE NIGHTMARE BEGINS", "You rush to the freezer and take out your emergancy gallon of <i>Ben and Jerry's Rainbow Cake Icecream.</i>\n\nThe pretty colors remind you of tolerance and it soothes you. After several seconds the icecream's gone and you're back to normal.\n\nEverything's okay. At last you regain composure and you decide to do some more thinking about the election.\n\n", "\nBack to the drawing board.", 1, 6, 0),
@@ -265,8 +272,8 @@ function renderNewScreen(index) {
   }
   
   if(currScreen != 38 )
-  html += "<br><p><b><span style='color: #062960; font-weight:900'>Player Status: </span><i><span style='color: #0c4196'> " + setPlayerStatus() + "</span></i></p>";
-  html += "</b></div>";
+  html += "<br><p><b><span style='color: #062960; font-weight:900;' class='playerStatus'>Player Status: </span><i><span class='actual-status' style='color: #0c4196'> <b>" + setPlayerStatus() + "</span></b></i></p>";
+  html += "<br></div>";
   document.getElementById("screen").innerHTML = (html);
 
 }

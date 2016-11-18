@@ -26,11 +26,19 @@ a {
 .hide-it:hover {
   text-decoration:underline;
 }
+.unhide-it {
+  color: #a55200;
+  font-weight:900;
+}
+.unhide-it:hover {
+  text-decoration:underline;
+}
+
 #body {
   
   margin:0;
   padding: 0;
-  background: #eeeeca;
+  background: #ffcccc;
   background-size: 100% 100%;
 }
 
@@ -49,7 +57,7 @@ html {
   
   margin:0;
   padding: 0;
-  background-color: #eeeeca;
+  background-color: #ffcccc;
 }
 .playerStatus {
   font-size: 2.5vw;
@@ -118,9 +126,12 @@ html {
 .strike-through {
   color: #666;
 }
-    
-</style>
+    </style>
 <script>
+var score = 0;
+var scripts;
+var currScreen = 0;
+
 var score = 0;
 var scripts;
 var currScreen = 0;
@@ -369,8 +380,13 @@ function setPlayerStatus() {
 
 function hideIt()
 {
-  document.getElementById("donations").innerHTML = "Fine. Be that way, you piece of shit jew faggot prick.";
+  document.getElementById("donations").innerHTML = "<div class='donation col-xs-10 col-md-10 col-lg-10'style=''><i><b>Fine. Be that way. Just know if I starve it's all because of you. Prick. It's not too late <span class='unhide-it' onclick='unhide()'>go back!</span>)</b></i></div>";
  
+}
+
+function unhide()
+{
+   document.getElementById("donations").innerHTML = "<div class='donation col-xs-10 col-md-10 col-lg-10' style=''><p style='text-align:center'><br><b><i>If you like what you see, and you want to see more, please consider donating. Your patronage is greatly appreciated!<br></p><form  action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'> <input type='hidden' name='cmd' value='_s-xclick'><input type='hidden' name='hosted_button_id' value='YJKAUGKWYSQ24'><p style='text-align:center'><input type='image' src='https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif' border='0' name='submit' alt='PayPal - The safer, easier way to pay online!'><img alt='' border= '0' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='auto' align:'middle'  height='auto'></p><brr </form><p style='text-align:center'> If think this is an eye-sore and wanna <span class='hide-it' onclick='hideIt()'>hide</span> it, that's fine too.</p></b></i>";
 }
 
 function convertNewlines(s) {
@@ -418,9 +434,7 @@ function changeScreens(mapNum) {
   }
 
   renderNewScreen(currScreen);
-}
-</script>
-
+}</script>
 
 <body onload="start()" id="body">
   <p><br></p>
@@ -442,12 +456,20 @@ function changeScreens(mapNum) {
         </div>
       </div>
     </div>
-  
-      <div class="row">
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        <div id="donations" class="donation col-xs-8 col-md-8 col-lg-8" style=""><p style="text-align:center"><br><b><i>If you like what you see, and you want to see more, please consider donating. Your patronage is greatly appreciated!<br></p>
-         <form  action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> <input type="hidden" name="cmd" value="_s-xclick"> <input type="hidden" name="hosted_button_id" value="YJKAUGKWYSQ24"><p style="text-align:center"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border= "0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="auto" align:"middle"  height="auto"></p><brr </form><p style="text-align:center"> If think this is an eye-sore and wanna <span class="hide-it" onclick="hideIt()">hide</span> it, that's fine too.</p></b></i></div>
-    
-      
+
+    <div class="row">
+      <div class="col-xs-2 col-md-2 col-lg-2"></div>
+      <div id="donations">
+        <div class="donation col-xs-10 col-md-10 col-lg-10" style="">
+        <p style="text-align:center"><br><b><i>If you like what you see, and you want to see more, please consider donating. Your patronage is greatly appreciated!<br></p>
+         <form  action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> <input type="hidden" name="cmd" value="_s-xclick">
+           <input type="hidden" name="hosted_button_id" value="YJKAUGKWYSQ24">
+           <p style="text-align:center">
+           <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+             <img alt="" border= "0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="auto" align:"middle"  height="auto"></p><brr </form><p style="text-align:center"> If think this is an eye-sore and wanna <span class="hide-it" onclick="hideIt()">hide</span> it, that's fine too.</p>
+           </b></i>
+          </div>
+    </div>
+
+
 </body>
-</html>

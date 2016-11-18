@@ -1,0 +1,421 @@
+<html>
+
+<style>
+div {
+  text-align: justify;
+}
+a {
+  font-weight: 600;
+}
+#body {
+  
+  margin:0;
+  padding: 0;
+  background: url(https://usercontent.irccloud-cdn.com/file/F9FQfWrn/background.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+a:link {
+  color: yellow;
+}
+
+.vamp-choice {
+  color: #909;
+}
+.lucifer {
+  color: #205;
+}
+.vamp-choice:hover {
+  color: #303;
+}
+html {
+    cursor: default;
+  
+  margin:0;
+  padding: 0;
+  background-color: #FFD598;
+}
+.choice {
+  color:#21690f;
+}
+.pepeMeme{
+  width: 100%;
+  border-top-left-radius: 20px;
+
+}
+.text-padding {
+  margin: -5% -1 0 0;
+  padding: 0px 10px 5px 10px;
+  text-align: right;
+  font-family: "Courier New";
+  font-size: 1.5vh;
+  opacity: .99;
+  word-wrap: break-word;
+}
+.bosom-none {
+    margin-right: -15px; // Removes the right gap
+    margin-left: -15px;  // Removes the left gap
+}
+
+.choice:hover {
+  color: #0a2403;
+}
+
+.evil-choice:hover {
+  color: #300;
+}
+.evil-choice{
+  color: #A00;
+}
+
+.meme {
+  align: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#screen {
+  float: left;
+  opacity: .99;
+  color: #000;
+  border-left-style: solid;
+  margin: 0 0 0 -15px;
+  border-left-width: 1px;
+  font-family: sans-serif;
+  font-size: 2.2vh;
+}
+.milo {
+  color: #b75a09;
+  font-style: italic;
+  font-weight: bold;
+}
+.screen-text {
+  margin: 0 0 0 15px;
+}
+
+.strike-through {
+  color: #666;
+}
+</style>
+
+<script>
+
+var score = 0;
+var scripts;
+var currScreen = 0;
+
+var Script = function(header, prompt, optionA, mapA, scoreA, visitedA, optionB, mapB, scoreB, visitedB, optionC, mapC, scoreC, visitedC, optionD, mapD, scoreD, visitedD) {
+  this.header = header;
+  this.prompt = prompt;
+  this.options = 4;
+
+  this.optionA = optionA;
+  this.optionB = optionB;
+  this.optionC = optionC;
+  this.optionD = optionD;
+
+  this.mapA = mapA;
+  this.mapB = mapB;
+  this.mapC = mapC;
+  this.mapD = mapD;
+
+  this.scoreA = scoreA;
+  this.scoreB = scoreB;
+  this.scoreC = scoreC;
+  this.scoreD = scoreD;
+
+  this.visitedA = visitedA;
+  this.visitedB = visitedB;
+  this.visitedC = visitedC;
+  this.visitedD = visitedD;
+};
+
+function start() {
+
+  scripts = [new Script("THE NIGHTMARE BEGINS", "You wake up. It's the morning after the election and you seem to have had the <i>craziest</i> dream. Come to think of it, actually it was more of a nightmare. You dreamt Hillary Clinton lost the election. TO TRUMP OF ALL PEOPLE! <i>Absurd!</i>\n\nNevermind. You turn on the news. To your shock you see Rachel Maddow crying. Profusely. After several minutes of wimpering she finally starts to talk.\n\n<i>You're awake by the way. You're not having a terrible, terrible dream. Also you're not dead, you haven't gone to Hell. This is your life now. This is our election now. This is us. This is our country. It's real.</i>\n\nWhat's going on?\n\nSlowly you start piecing it all together...<br><br>", "Did Trump steal the election?", 1, 1, 0),
+    new Script("THE NIGHTMARE BEGINS", "Yes. It would appear that Trump stole America.\n\nYou let that sink in for a moment.\n\n<b>Trump stole America!</b>\n\n This is tragedy and you will not stand for such injustice!\n\nStill you can't help but wonder, <b>how the fuck did he do it?</b><br>", "Maybe it was a fair and honest election where the silent majority finally spoke their mind.", 0, 0, 2, "HE MUST HAVE RIGGED IT!", 2, 2, 1, "IT WAS THE BIGOTS!!", 6, 8, 0),
+    new Script("THE NIGHTMARE BEGINS", "\nYou rush to the tweet-o-sphere to spread the word: <i>Drumpf's a cheater-cheater-pumpkin-eater!</i>\n\nI mean how else could he win <b>290-222</b> when he's #literallyHitler everybody else was #withHer? It wasn't supposed to be this way!\n\nAfter a dozen more of your <i>heroic</i> tweets your phone starts blowing up with mentions.\n$https://usercontent.irccloud-cdn.com/file/AJlcbBiI/twitter1.PNG", "Check in with presumptive Echo Chamber", 3, 3, 0),
+    new Script("THE NIGHTMARE BEGINS", "\nIt appears your safespace has been taken over by the Demagogue Frog and his xenophobic cult followers. People aren't agreeing with you! Oh no!\n\nYou feel it. You're starting to lose motor control. Arms flopping wildly. Neck twitching. You're becoming #triggered!\n\nIf you don't do something soon, you're gonna turn into the next Trigglypuff and then you'll be nothing more than another internet meme!\n\nWhat do you do?$https://usercontent.irccloud-cdn.com/file/Jy2YtbNJ/pepeFrogGuy.PNG", "Eat some icecream.", 4, 4, 0, "\nFind someone to agree with you.", 5, 5, 0),
+    new Script("THE NIGHTMARE BEGINS", "You rush to the freezer and take out your emergancy gallon of <i>Ben and Jerry's Rainbow Cake Icecream.</i>\n\nThe pretty colors remind you of tolerance and it soothes you. After several seconds the icecream's gone and you're back to normal.\n\nEverything's okay. At last you regain composure and you decide to do some more thinking about the election.\n\n", "\nBack to the drawing board.", 1, 6, 0),
+    new Script("THE NIGHTMARE BEGINS", "You frantically ring up your <i>Gender Studies</i> professor and explain the emergency.\n\nRecognizing the urgency of the situation, she rushes over to your crappy little apartment fully equipped with chocolate-icing and a puppy.\n\nAfter a solid hour-long cry, a good deal of frosting-licking and spooning, you send her on her way and go back to wondering what happened about last night.", "Contemplate further how the hell Trump stumped you so hard", 1, 7, 0),
+    new Script("THE NIGHTMARE BEGINS", "It's all starting to make sense now.\n\nTrump took America by tapping into our collective hatred and intolerance.\n\nMr. Frogman President-Elect's the physical manifestation of everything livid and cruel in this world:<ul><li>Internalized misogyny</li><li>Systematic-racism</li><li>Satanic Incantations</li></li></ul>\nIn summation, he used an especially potential combination of hatred, sexism, and white supremacy to brainwash the masses into electing him President.\n\n<b>What do you do?</b>", "Realize you're blowing everything out of proportion, accept the results of the election, and move along to your day-job.", 7, 9, 1, "Break other people's shit cause you didn't get your way.", 8, 10, 0),
+    new Script("THE NIGHTMARE BEGINS", "As the hangover fades and you start getting ready for work, that's when you remember something very interesting:\n\nYou're actually a <i>Social Justice Warrior Millenial</i> still  living off Daddy's credit card and you've never worked a day in your life.\n\nFunny thing ain't it, the correlation between being jobless and Democrat... Gotta be a coincidence...\n\nHaving nothing better to do, you decide it's time to go complain about whatever nonsensical bullshit happens to strike your fancy.", "Let's go Protest!", 8, 11, 0),
+    new Script("FINDING YOUR VOICE", "\n\n<b>It's time to <a href='https://www.youtube.com/watch?v=VqJSiL1gfWY' target='_blank'>RABBLE!</a></b>\n\nFirst thing's first: ya gotta make a sign. That way, everyone will know what you're advocating. \n\nThere's only one problem: that sounds kinda hard...\n\n$https://usercontent.irccloud-cdn.com/file/DPwI9haM/rabbling.png", "*Groan because you hate effort*", 9, 12, 0),
+    new Script("FINDING YOUR VOICE", "\n\nNot to worry though, George Soros has your back! He'll spot you on the signs, banners, T Shirts - pretty much everything you and your protest could ever need.\n\nGoddamn, he'll even pay you too! What a <a href='http://www.rense.com/general96/sorosmostevil.htm' target='_blank'>benevolent, kind-hearted</a> man.\n\n    $https://usercontent.irccloud-cdn.com/file/TbhoRU35/craigslist-ad.png", "Yippie! Now I'll *finally* have a voice", 10, 13, 0),
+    new Script("FINDING YOUR VOICE", "You gather your friends, board the train, and head off to New York City to show the world what Civil Disobedience really means.\n\nOn the train ride up, you find some time to browse Facebook and the whole thing's gone nuclear and rightfully so.\n\nTo your absolute horror, a lot of your so-called 'friends' are actually bigotted, <i>centipedal</i> insects who just surfaced from the metaphorical woodwork.\n\n<b>What do you do?</b>", "Exit the app.", 11, 14, 0, "Initiate a pointless facebook war filled with pointless ad hominems", 12, 15, 0, "Defriend anyone and everyone who happens to disagree with your political preferences.", 15, 16, 0),
+    new Script("FINDING YOUR VOICE", "You try to be rational. You try to exit the app. You try and you try but you can't. The mind is strong but the flesh is weak; your <i>Social Justice training</i> starts kicking in. \n\nYou go into auto-pilot and now your thumb's won't obey. At least, not until you do your part to save the world.\n\nYou gotta to do something. In the words of Ghandi, <i>be the change you want to see in the world.<i>\n\n<b>What do you do?</b>", "Exit the app.", 11, 14, 2, "Initiate a pointless facebook war filled with pointless ad hominems", 12, 15, 0, "Defriend anyone and everyone who happens to disagree with your political preferences.", 15, 16, 0),
+    new Script("FINDING YOUR VOICE", "You take a deep breath, preparing for battle.\n\nYou ready your buzzwords, all you have to do is choose your foe open fire.\n\n<b>Who's your target?</b>", "Working class man of African descent who's probably secretly affiliated with the KKK.", 13, 17, 0, "Caucasion youth leader and well-known community-activist.", 14, 18, 0),
+    new Script("FINDING YOUR VOICE", "\n\n<i>How dare he betray his people and lose us the black vote!</i>\n\nYou call him a racist and a <i>negro.</i> Then you quickly defriend and block. That'll show him!\n\nAfter *exposing* several more <i><b>Race Traitors</i></b>, you finally arrive at your destination: the Big Apple.$https://usercontent.irccloud-cdn.com/file/NdJmx3et/blackGuy.png", "Nothing passes the time like dismantling systemic racism. Let's take back America!", 16, 19, 0),
+
+    new Script("FINDING YOUR VOICE", "\nIt's alright to go for the low-hanging fruit every now and then. After all, somebody's gotta do it...\n\nYou start by calling him a sexist and a homophobe.\n\nYou insinuate him to be a child predator.\n\nOnce he's defeated, you decide to pass the time with a long tirade about how everyone's so Islamophobic yet Christianity's exponentially more twisted.\n\nFinally, you get off the train.$https://usercontent.irccloud-cdn.com/file/60gQyK5A/facebook.PNG", "Where has my country gone?", 16, 19, 0),
+    new Script("FINDING YOUR VOICE", "Frantically you race to disassociate with all the evil and bigotry that seems to have corrupted your facebook feed.\n\nAunts, uncles, childhood-friends long-since forgotten...\n\n<b>Oh no!!</b>\n\nYour own father's part of the cult.\n\n<i>HOW COULD HE BE A TRUMP SUPPORTER?</i>?\n\n<b><i>GASP!</i></b>\n\nYou know what this means: you gotta cut the ties.\n\n  ", "It's for the Greater Good...", 16, 19, 0),
+    new Script("#LOVETRUMPSHATE", "With that little skirmish outa the way, you arrive at the train stop. It's time to make your stand! At first you're a little confused but you quickly get the hang of it. You realize protesting boils down to 2 very  basic rules:<ul><li>When you see someone going about their daily routine and specifically <i>not</i> protesting, all you gotta do is go over and try to fuck up their day.</li><li>When asked why you're protesting, simply shout key phrases and accuse your audience of <i>BIGOTRY.</i></li></ul>\nGee wiz! This sounds kinda fun!\n\nSuddenly you hear someone off in the distance yell something sharp. <i>\"This rat-bastard's gotta a problem with our Peace protest! Let's get him!\"</i>\n\n   ", "Light your torch, sharpen your pitchfork and continue taking back America.", 17, 20, 0),
+    new Script("#LOVETRUMPSHATE", "You hurry on over to see what all the commotion's about. The rat-bastard in question appears to be a middle-aged man with some genuine curiosity about your guys' movement.\n\nSuddenly, he turns to you specifically and asks you what exactly you're protesting.\n\nYou start to open your mouth but then, for the first time in a long-minute, you stop and think and you realize something relatively important: <i><b>you actually have no idea what the fuck you're doing here.</i></b>\n\n\n<b>So what exactly do you tell the wise, rat-bastard man?</b>\n", "Democracy is broken and that's why we're protesting! Fuck Drumpf!", 18, 21, 0, "We're trying to get Trump impeached, that way he doesn't tear America apart.", 19, 22, 0, "*Say nothing and attack the wise man for his unapologetic inquisition*", 20, 23, 3),
+    new Script("#LOVETRUMPSHATE", "You explain to the wise man about how <i>democracy's broken</i> and how you're doing everything in your power to fix it. And that's why ya'll be  setting cars on fire and looting local stores and hanging Drumpf in effigy.\n\nThe wise rat-bastard man takes all of this in, and responds very slowly and carefully to try to talk some sense into you.\n\n<i>\"Silly libtard, lemme set you straight. You see, Trump didn't win in spite of democracy; he won because of it. And stop calling him 'Drumpf' for that matter; that meme's like 6 months overplayed and it's fuckin' retarded.\"</i>\n\nAnd that's when you have a moment of clarity and realize something beautiful. You realize that<b><i> there will be casualties on both sides. There will be, because people have to die to make a change in this world.<i><b>\n\n </b></b>", "Assault the wise man.", 20, 23, 3),
+    new Script("#LOVETRUMPSHATE", "<i>\"You are aware that the President-Elect doesn't get impeached by popular opinion, right? They'd actually have to do something like, say... Horde 650 thousand <b>classified emails</b> on a private server in their bathroom or something... But just being unpopular among whiny millenials is hardly cause to terminate the position.\"\n\n</i>It seems the wise man has done a very unwise thing today: he attempted to Logic against a Killary supporter. Blasphemy!\n\nAnnnnnnnnnnnnd now you're #triggered. Under SJW doctrine, you know that from this point forward you're not responsible for any of your actions. For some odd reason this mind-state kinda reminds you a little bit of all the sloppy inebriated sex on college campuses and how you couldn't consent cause your head was all trippy and high.\n\nAnyway, you've been pushed to the brink and there's only one thing left to do:", "Brutalize the wise man.", 20, 23, 3),
+    new Script("#LOVETRUMPSHATE", "\nYou and your cohorts purge the wise man's life, putting an end to all his hate-speech and nazi rhetoric, thus making the world a better, safer place. And real-talk here, it felt kinda good.\n\nAs you gaze into his cold, dying eyes, you feel a sudden cannibalistic lust wash over you. This must be how Marina Abramovic feels all the time. Compelled by the Will of the <b>Dark Lord</b>, you know what must be done. The only question is the order in which to do it.$https://usercontent.irccloud-cdn.com/file/MKnsGG0I/killthewiseone.png", "Taste his body.", 21, 24, 4, "Sip from his blood.", 23, 25, 4),
+    new Script("#SPIRITCOOKING", "\nYou feel compelled to sample the wise man's flesh. In the beginning you're nervous, for there is still a small sliver of humanity left in you. Not to worry though, the feelings pass soon enough.\n\nYou bite into the dying man. At first you nibble. But upon actually tasting him, you're thrown into a frenzy and your nibbles turn to chomps. All this man-eating has left you quite parched and you could really use a drink.$https://usercontent.irccloud-cdn.com/file/xuhc3RX9/marina.png", "Taste his body.", 22, 24, 2, "Sip from his blood.", 22, 25, 4),
+
+    new Script("#SPIRITCOOKING", "\nYou quench your thirst as you drink from the wise man's Life Force. You dowse yourself in the sweet, sweet nector.<i>Mmmmmmm Delicious!</i>\n\nYou find yourself incredibly aroused. You ask yourself why. \n\nMaybe it's the taboo nature of it all. If people ever knew, they'd condemn you for what you've done...\n\nThe contemplation of your newfound <i><a href='http://www.nytimes.com/2016/10/31/us/politics/anthony-weiner-democratic-reaction.html?_r=0' target='_blank'>Forbidden Fruit</a></i> is cut short as you feel a chill in the air and a shadowy figure creeps up behind you!\n\n $https://usercontent.irccloud-cdn.com/file/qXoMOFNF/weiner.png", "Who could it be now?", 25, 26, 4),
+
+    new Script("#SPIRITCOOKING", "\n\nYou bite into his neck and begin to suck, sapping away the wise man's Life Force, slowly becoming revitalized in the process.\n\nAt last you suck him dry and everything seems clear: <b>You're the hero America <i>needs</i>, not the hero it deserves.</b>\n\nThe time has come to feast upon his flesh.\n\n $https://usercontent.irccloud-cdn.com/file/rSdoUljW/spiritCooking2.png", "Taste this body.", 24, 24, 4, "Sip from his blood.", 0, 25, 2),
+
+    new Script("#SPIRITCOOKING", "\n\nYou gorge upon his withered, now-lifeless corpse and feel the true ecstacy of your carnage. By the time you're done, all that's left is his organs. You figure eating that'd be kinda gross and so you hesitate.\n\nSuddenly you feel an ominous aura permeate the air and a dark, ugly figure lets out a shrill cry just beyond the yonder. You go over to investigate, stuffing the wise man's organs in your napsack for safety.\n\n $https://usercontent.irccloud-cdn.com/file/lwnJ9k9t/hillaryspiritcooking.png", "Investigate the vile creature...", 25, 26, 4),
+
+    new Script("#SPIRITCOOKING", "\n\nYou get a good look at the creature; the thing vaguely resembles a man. It has long, sharp claws, aged yellow fangs for teeth, black beady eyes and a disproportionate stature. The creature hisses words and they pierce your ears like needles.\n\n\<b><span class='lucifer'>\"Relax, my child. Do not fear for you are safe now.\"</b></span> The creature moves closer to introduce itself, grazing your lips with his long, terrible fingernails. It continues.\n\n<b><span class='lucifer'>\"I go by many names. Beelzebub. Lucifer. In a past life I was once the Warlord Muhammad, but in this one I simply go by the name 'John'. John Podesta.\"\n\n</span></b>Fuck, what an honor. This man's your hero. $https://usercontent.irccloud-cdn.com/file/Pw65KTxx/johnpodesta.png", "Shake his Jesus-fish hand", 36, 28, 4),
+    new Script("#SPIRITCOOKING", "\n\nWithout question, without hesitation, you obey John Podesta. You scoop out the wise man's heart and consume the last of his spirit.\n\n<i><span class='lucifer'>You feel yourself changing. Transforming. So suddenly and it hurts. It hurts like Hell and you wonder if that's exactly where you're going.\n\nYou feel yourself mutate. Your skin, once soft and vuluptuous has turned ashy and dry. Fangs begin to portrude out your mouth. Your blood turns to venom and your eyes pulse red.</i></span>\n\n<b>Now more than anything you crave destruction. You realize satiating your bloodlust the only way to make the immense pain you hold now dissipate.</b>\n\n $https://usercontent.irccloud-cdn.com/file/eYP2AI9d/monstermeme.png", "Resist the petulent urge to act on your feelings", 0, 0, 2, "Fuck with innocent taxpayers.", 27, 35, 3),
+    new Script("#SPIRITCOOKING", "\n\nYou rain hellfire upon New York City. There's riots in the streets, people shout in tongues like at a Pentecostal church. You suck the people dry, thus soothing your condition, however only temporary.\n\nIt's all going so well and you start to do some thinking. There's a trope about <i>monsters</i> and how in the movies everyone runs for their life so they won't be transformed.\n\n<i>What if being a monster isn't so bad after all? What if everyone who resists the beast is so caught up in the fight they never stop to wonder if the beast is actually just chilling out, doing its thing, having a real good time?</i>\n\n<b>Your philosophical musings into the realm of Absurdism are cut short when you're interrupted by a lustrous, incredibly flamboyant figure charging toward you.</b>\n\n$https://usercontent.irccloud-cdn.com/file/dUOAjcS4/milo.png", "Brace yourself.", 28, 36, 4),
+    new Script("#NERO", "\n\nYou narrowly avoid the blow. This time.\n\nWho is this man? And so you ask.\n\nIn a smoothe British tongue he replies, <b><span class='milo'><i>\"Je Suis Milo. And I've come to rekt you and the rest of the demon-kin, darling.\"</span></b> \n\n<i>No... He can't be!</i> You're adversary is, of all people, Milo Yipponopolous, one of Trump's strongest generals.</i> He's dangerous. Still though, for such an evil man, he's hot as hell. That voice... Those eyes and the balls on this one... You find yourself oddly charmed...\n\n<i>Shut the fuck up, you need to focus!</i>\n\nLooking back to the days of your <i>SJW Training Camp</i>, you remember your re-education. You've studied his movements, you seen all his tricks. You know what he's gonna do. He's heavily versed not only in the <i>Art of Logic</i>, but also in the <i>Art of #Triggering</i>. You'll have to tread carefully.\n\n<b>What's your first talking point?</b>$https://usercontent.irccloud-cdn.com/file/xFcCITkP/sexyfaggot.png", "A rational argument asserting the legitimacy of feminism in the third world", 0, 0, 2, "Islamophobia!", 29, 37, 4),
+    new Script("#NERO", "\nYou take a deep breath. One by one, you gather your most powerful strawman and ready your arsenal of buzzwords. No one can withstand this onslaught. \n\n\"Islam is a beautiful, peaceful religion. America needs to be tolerant towards all walks of life. We've always been a melting pot of culture and diversity, to treat Islam any differently would be antithetical to our country's deepest values!\"\n\nYou brush back your cotton candy blue hair from your eyes and tell him that the Right's irrational fear of Muslims is not only extremist, but also hurtful and bigoted.<i> Really, it's the Right's fault these incidents keep happening, their views are provoking these actions!</i>\n\nYou sit back and stare at him smugly, chortling to yourself as you've just educated another misinformed degenerate.\n\n $https://usercontent.irccloud-cdn.com/file/QB61cXv8/islam.png", "NAILED IT!", 30, 38, 4),
+    new Script("#NERO", "\n\nYour adversary begins to <a href='https://www.youtube.com/watch?v=iGZdPxLcHV8' target='_blank'>laugh maniacally.</a> \n\nAfter what seems like hours, Nero collects himself and retorts,<span class='milo'> \"Oh you silly, silly, silly liberal fruitcake. Darling, you see, the West wouldn't be the West if we let those Eastern savages have their way with us. They do not accomodate, they assimilate. Our culture will be destroyed. One day you're buying food from the grocery store and the next your wife is getting gang-banged like a goat while your head is being cut off with a dull, rusty blade.\"</span>\n\nYou recoil in horror, the imagery of such a world too horrible and fantastical to comprehend. You've seen the pictures though, you've heard the stories, the news broadcasts. They couldn't really be like that, could they?\n\nYou decide you only have one option.\n $https://usercontent.irccloud-cdn.com/file/e7M9eQDx/islamaphobia.png", "Double down. MUSLIMS DON'T HATE GAYS, SHITLORD!", 31, 39, 4),
+    new Script("#NERO", "\n\nNero walks over to a file cabinet and pulls out some facts. And then, like bombs, he drops em on your frumpy dumpy lil ass.\n\n<span class='milo'>\"Oh yes they do, love. My cocksucking faggotry is a <a href='https://www.washingtonpost.com/news/worldviews/wp/2016/06/13/here-are-the-10-countries-where-homosexuality-may-be-punished-by-death-2/' target='_blank'>capital offense</a> in quite a few <i>Sharian shitholes!</i> If ya ask me, you'll get a much better bang for your buck if you take em to the Afghans or some other backwards hell whole.\"</span>\n\nWell fuck, you're just about slain. But wait, there's hope!<i><b> He used the F word!</i></b>\n\n This could be the ammo you need!\n\n $https://usercontent.irccloud-cdn.com/file/CMyQgkBZ/milofag.png", "CRY HOMOPHOBIA!", 33, 40, 4),
+    new Script("#NERO", "\n\nHis Troll Level's OVER 9000!\n\nIf you're gonna do this, you gotta use facts."),
+    new Script("#NEROSUCKSBLACKDICK", "\n\nYou widen your stance, preparing to mount your final stand.\n\nYou summon all of the impudent rage your soft, fleshy body can muster, inhale, and then let loose on him.\n\n\"YOU ARE NOTHING BUT A RACIST AND VILE SEXIST PIG!\" Hot tears are streaming down your face, and you begin to stammer. \"YOU'RE A HOMOPHOBE AND AND AN-...\" The tears take over, and you can no longer speak coherently.\n\nMilo reaches out and pulls you into his embrace, and holds you tight. A strange feeling of relief washes over you.\n\n<span class='milo'>\"Look here darling, everything will be alright. Trump is your friend. He only wishes to make America great again. Come here. Your suffering is over. You're safe.\"</span>\n\nYou cry softly for the rest of the night as he explains how everything will be different. The world seems like it won't be such a bad place at all anymore.\n\nUnless you're a strong, able African man, this marks the end of our adventure... <b>One final question: Are you a strong, able African man?</b>", "He dindu nuffin!", 34, 49, 4, "No, I can count past 4.", 35, 50, 4),
+    new Script("#TAKINGNERO", "Nero leads you back to his place. You're shaking with excitement. As a strong, liberal black man, you haven't slept under a roof since you were discharged from the asylum. Maybe you'll let him get in your pants... if he earns it.\n\nAfter a long, sultry night of dark and rich sexual experiences, Nero kicks you out in the morning, saying he will call. You don't recall giving him your number, but he said he would contact you, so you believe him. Why would he lie to you?\n\nOn your Stride of Pride<sup>(TM)</sup> home, you reflect on the previous day's events. Drumpf won. You sucked an old man's blood! A rush of empowerment fills your body. <i>You go, girl!</i>At the end of it all, even after rabbling with all of your might, you can't really recall accomplishing anything of important.\n\nMilo's cum drips down your leg as you walk down the sidewalk. Looking back now, you really did get fucked by the Patriarchy."),
+    new Script("NERO BREAKS YOUR HEART", "\n\n<span class='milo'>\"Unfortunately for you sweetheart, you're not my type. Don't feel too bad though, I'm sure you will find someone someday who will love you almost as good as I could. Remember, beauty is on the inside. *Milo starts coughing violently* Excuse me dear, must have been a frog in my throat. We can't all have fabulous hair like myself, but beauty is much deeper than skin deep baby bird. Don't lose hope...\"</span>\n\nYou know your time with him is over, but you're glad you had it, all the same. A strange warmth fills your body. You reach up to kiss him goodbye, but he dodges your attempt and shuffles away. \n\n<span class='milo'>\"Goodness darling you scared me, people like you can't do that with people like me.\"</span>\n\nMilo turns on his heel and prances off, a trail of glitter following him. An eagle screeches in the distance.\n\n  $https://usercontent.irccloud-cdn.com/file/ch8wzRAv/anotherone.png"),
+    new Script("#SPIRITCOOKING", "<b><span class='lucifer'>\"I have come to congradulate you on taking the first step on your journey towards becoming a True Democrat. Without any prompt or guidance, you took it upon yourself to consume the spirit of the Old Guard. This is what Radical Leftism is all about.\n\n\"Soon you will be among the ranks of the greats. People who will forever be remembered for their time upon this fair earth.\n\n\"Magnanimous, gregarious people like Rosie O'Donald, Amy Schumer, and Anita Sarkesian. All you gotta do is eat the wise man's heart.\"</span></b></span>\n\nThey say the Devil speaks in a silver tongue and now you know why. Mesmerized by his words, you have no choice but to slavishly obey.\n\n ", "FILLER FOR NOW", 26, 27, 4)
+
+  ];
+
+  //currScreen = parseInt(prompt("Enter currScreen (Dev Purposes, Enter 0 to start at the beginning, 33 to go to the current screen)"));
+  currScreen = 0;
+  renderNewScreen(currScreen);
+}
+
+function renderNewScreen(index) {
+  var prompt = scripts[index].prompt;
+  var imgUrl = "";
+
+  if (prompt.indexOf("$http") != -1) {
+    imgUrl = prompt.substring(prompt.indexOf("$http") + 1);
+    prompt = prompt.substring(0, prompt.indexOf("$http"));
+  }
+
+  prompt = convertNewlines(prompt);
+  var html = "<div class='screen-text'>";
+
+  if (scripts[index].header != "") {
+    html += "<p style='font-size: 3vw;'><b>" + scripts[index].header + "</b></p>";
+  }
+
+  if (imgUrl !== "")
+    html += "<br><div class='row'><div class='col-xs-2'></div><div class='col-xs-8'><img src='" + imgUrl + "' class='meme'></div> </div>";
+
+  html += "<p>" + prompt + "</p>";
+
+  if (scripts[index].optionA != null) {
+    html += "<p ";
+    if (scripts[index].visitedA == 2)
+      html += "class= 'strike-through'><b><i><strike>" + scripts[index].optionA + "</strike></b></i></p>";
+    else if (scripts[index].visitedA == 3) {
+      html += " onclick='changeScreens(1)'><b><i><span  class='evil-choice'>" + scripts[index].optionA + "</span></b></i></p>";
+    } else if (scripts[index].visitedA == 4) {
+      html += " onclick='changeScreens(1)'><b><i><span  class='vamp-choice'>" + scripts[index].optionA + "</span></b></i></p>";
+    } else
+      html += " onclick='changeScreens(1)'><b><i><span class='choice'>" + scripts[index].optionA + "</b></i></span></p>";
+  }
+
+  if (scripts[index].optionB != null) {
+    html += "<p ";
+    if (scripts[index].visitedB == 2)
+      html += "class= 'strike-through'><b><i><strike>" + scripts[index].optionB + "</strike></b></i></p>";
+    else if (scripts[index].visitedB == 3) {
+      html += " onclick='changeScreens(2)'><b><i><span  class='evil-choice'>" + scripts[index].optionB + "</span></b></i></p>";
+    } else if (scripts[index].visitedB == 4) {
+      html += " onclick='changeScreens(2)'><b><i><span  class='vamp-choice'>" + scripts[index].optionB + "</span></b></i></p>";
+    } else
+      html += " onclick='changeScreens(2)'><b><i><span class='choice'>" + scripts[index].optionB + "</b></i></span></p>";
+  }
+  if (scripts[index].optionC != null) {
+    html += "<p ";
+    if (scripts[index].visitedC == 2)
+      html += "class= 'strike-through'><b><i><strike>" + scripts[index].optionC + "</strike></b></i></p>";
+    else if (scripts[index].visitedC == 3) {
+      html += " onclick='changeScreens(3)'><b><i><span  class='evil-choice'>" + scripts[index].optionC + "</span></b></i></p>";
+    } else if (scripts[index].visitedC == 4) {
+      html += " onclick='changeScreens(3)'><b><i><span  class='vamp-choice'>" + scripts[index].optionC + "</span></b></i></p>";
+    } else
+      html += " onclick='changeScreens(3)'><span class='choice'><b><i>" + scripts[index].optionC + "</b></i></span></p>";
+  }
+  if (scripts[index].optionD != null) {
+    html += "<p ";
+    if (scripts[index].visitedD == 2)
+      html += "class= 'strike-through'><b><i><strike>" + scripts[index].optionD + "</strike></b></i></p>";
+    else if (scripts[index].visitedD == 3) {
+      html += " onclick='changeScreens(4)'><b><i><span  class='evil-choice'>" + scripts[index].optionD + "</span></b></i></p>";
+    } else if (scripts[index].visitedD == 4) {
+      html += " onclick='changeScreens(4)'><b><i><span  class='vamp-choice'>" + scripts[index].optionD + "</span></b></i></p>";
+    } else
+      html += " onclick='changeScreens(4)'><b><i><span class='choice'>" + scripts[index].optionD + "</b></i></span></p>";
+  }
+  html += "<br><p><b><span style='color: #062960; font-weight:900'>Player Status: </span><i><span style='color: #0c4196'> " + setPlayerStatus() + "</span></i></p>";
+  html += "</b></div>";
+  document.getElementById("screen").innerHTML = (html);
+
+}
+
+function setPlayerStatus() {
+  switch (score) {
+    case (0):
+      return "Dazed and Confused";
+    case (1):
+      return "Shocked and Horrified";
+    case (2):
+      return "Trump's in bed with George Soros.";
+    case (3):
+      return "Oh wait no that's Hillary.";
+    case (4):
+      return "Suffering from a Lesbianic brain freeze."
+    case (5):
+      return "I need my <a href='https://www.youtube.com/watch?v=sXQkXXBqj_U' target='_blank'> safe space.</a>";
+    case (6):
+      return "Almost Untriggered.";
+    case (7):
+      return "Almost Untriggered.";
+    case (8):
+      return "Social Justice Warrior in a World of Injustice!"
+    case (9):
+      return "Unemployed Millenial";
+    case (10):
+      return "Lazy and Slothish";
+    case (11):
+      return "Lazy and Sluggish";
+    case (12):
+      return "Mindless Drone";
+    case (13):
+      return "Enthusiastic Degenerate";
+    case (14):
+      return "Tries to be rational, but still ends up a cuck.";
+    case (15):
+      return "Keyboard Warrior";
+    case (16):
+      return "Limp-wristed Cuckold";
+    case (17):
+      return "Uses Racism to fight 'Racism'.";
+    case (18):
+      return "Smear-tactic Specialist";
+    case (19):
+      return "Kinda-sorta(ish) Making a Difference!";
+    case (20):
+      return "Granola gargling flustercuck";
+    case (21):
+      return "Not entirely sure what the fuck you're on about.";
+    case (22):
+      return "Utterly confused about how our government works...";
+    case (23):
+      return "<a href='http://www.adultswim.com/videos/rick-and-morty/look-whos-purging-now-pt-5/' target='_blank'>Look who's purging now.</a>";
+    case (24):
+      return "Libtard Savage";
+    case (25):
+      return "Blood-sucking Democrat";
+    case (26):
+      return "Has a boner for John Podesta";
+    case (27):
+      return "Confirmed Pedo Sychophant";
+    case (28):
+      return "<a href='https://www.youtube.com/watch?v=bdkDk6Sifvc' target='_blank'>Do you believe in UFOs?</a>";
+    case (29):
+      return "";
+    case (30):
+      return "";
+    case (31):
+      return "";
+    case (32):
+      return "";
+
+    case (35):
+      return "Shillary's Minion";
+    case (36):
+      return "Warring with  <strike>Nero</strike> God.";
+    case (37):
+      return "At least you're not Islamophobic!";
+    case (38):
+      return "Captain Sweden";
+    case (39):
+      return "Taken Aback by Nero's Resistance";
+    case (40):
+      return "Broken and Hysterical";
+
+    case (49):
+      return "The Patriarchy can suck my dick!";
+    case (50):
+      return "Not even the gays want me.";
+  }
+}
+
+function convertNewlines(s) {
+  var a = 0;
+
+  while (a < s.length - 1) {
+    if (s.substring(a, a + 1) == "\n") {
+      s = s.substring(0, a) + "<br>" + s.substring(a + 1);
+      a = 0;
+    }
+    a++;
+  }
+
+  return s;
+}
+
+function changeScreens(mapNum) {
+  if (mapNum == 1) {
+
+    score = scripts[currScreen].scoreA;
+    if (scripts[currScreen].visitedA == 1)
+      scripts[currScreen].visitedA = 2;
+    currScreen = scripts[currScreen].mapA;
+  }
+  if (mapNum == 2) {
+    score = scripts[currScreen].scoreB;
+
+    if (scripts[currScreen].visitedB == 1)
+      scripts[currScreen].visitedB = 2;
+    currScreen = scripts[currScreen].mapB;
+  }
+  if (mapNum == 3) {
+    score = scripts[currScreen].scoreC;
+
+    if (scripts[currScreen].visitedC == 1)
+      scripts[currScreen].visitedC = 2;
+    currScreen = scripts[currScreen].mapC;
+  }
+  if (mapNum == 4) {
+    score = scripts[currScreen].scoreD;
+
+    if (scripts[currScreen].visitedD == 1)
+      scripts[currScreen].visitedD = 2;
+    currScreen = scripts[currScreen].mapD;
+  }
+
+  renderNewScreen(currScreen);
+}
+</script>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body onload="start()" id="body">
+  <p><br></p>
+  <div class="container container-fluid">
+    <div class="row">
+      <div class="col-xs-3 col-md-3 col-lg-3 bosom-none description">
+        <div><img class="pepeMeme" src="https://usercontent.irccloud-cdn.com/file/Qf4MXEKk/trumpPepe.png">
+        </div>
+        <div class="text-padding">
+          <br>
+
+          <h style="font-size:2vh;word-wrap: break-word">#LoveTrumpsHate</h>
+          <p><br>an interactive (non)fiction game about living as a democrat in the wake of the 2016 Presidential Election.<br><br><br>Written by Heximal<br><br><br></p>
+        </div>
+      </div>
+
+      <div class="col-xs-9 col-md-9 col-lg-9 bosom-none">
+        <div id="screen">
+        </div>
+      </div>
+    </div>
+</body>

@@ -8,45 +8,38 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <script>
+
 var score = 0;
 var scripts;
 var currScreen = 0;
 var hidden= false;
-
 var Script = function(header, prompt, optionA, mapA, scoreA, visitedA, optionB, mapB, scoreB, visitedB, optionC, mapC, scoreC, visitedC, optionD, mapD, scoreD, visitedD) {
   this.header = header;
   this.prompt = prompt;
   this.options = 4;
-
   this.optionA = optionA;
   this.optionB = optionB;
   this.optionC = optionC;
   this.optionD = optionD;
-
   this.mapA = mapA;
   this.mapB = mapB;
   this.mapC = mapC;
   this.mapD = mapD;
-
   this.scoreA = scoreA;
   this.scoreB = scoreB;
   this.scoreC = scoreC;
   this.scoreD = scoreD;
-
   this.visitedA = visitedA;
   this.visitedB = visitedB;
   this.visitedC = visitedC;
   this.visitedD = visitedD;
 };
-
 function beginGame() {
   currScreen = 0;
   renderNewScreen(currScreen);
   hideIt();
 }
-
 function start() {
-
   scripts = [new Script("THE NIGHTMARE BEGINS", "You wake up. It's the morning after the election and you seem to have had the <i>craziest</i> dream. Come to think of it, actually it was more of a nightmare. You dreamt Hillary Clinton lost the election. TO TRUMP OF ALL PEOPLE! <i>Absurd!</i>\n\nNevermind. You turn on the news. To your shock you see Rachel Maddow crying. Profusely. After several minutes of wimpering she finally starts to talk.\n\n<i>You're awake by the way. You're not having a terrible, terrible dream. Also you're not dead, you haven't gone to Hell. This is your life now. This is our election now. This is us. This is our country. It's real.</i>\n\nWhat's going on?\n\nSlowly you start piecing it all together...<br><br>", "Did Trump steal the election?", 1, 1, 0),
     new Script("THE NIGHTMARE BEGINS", "Yes. It would appear that Donald Trump stole America.\n\nYou let that sink in for a moment.\n\n<span class='bold-this-shit'>Trump stole America!</span>\n\n This is tragedy and you will not stand for such injustice!\n\n\n<span class='bold-this-shit'>Still you can't help but wonder, <span class='bold-this-shit'>how the fuck did he do it?</span><br>\n ", "Maybe it was a fair and honest election where the silent majority finally spoke their mind.", 0, 0, 2, "HE MUST HAVE RIGGED IT!", 2, 2, 1, "IT WAS THE BIGOTS!!", 6, 8, 0),
     new Script("THE NIGHTMARE BEGINS", "\nYou rush to the tweet-o-sphere to spread the word: <i>Drumpf's a cheater-cheater-pumpkin-eater!</i>\n\nI mean how else could he win <span class='bold-this-shit'>290-222</span> when he's #literallyHitler everybody else was #withHer? It wasn't supposed to be this way!\n\nAfter a dozen more of your <i>heroic</i> tweets your phone starts blowing up with mentions.\n$http://i1253.photobucket.com/albums/hh585/heximal7/twitter1_zpsi1csjfxw.png", "Check in with presumptive Echo Chamber", 3, 3, 0),
@@ -61,7 +54,6 @@ function start() {
     new Script("FINDING YOUR VOICE!", "You try to be rational. You try to exit the app. You try and you try but you can't. The mind is strong but the flesh is weak; your <i>Social Justice training</i> starts kicking in. \n\nYou go into auto-pilot and now your thumb's won't obey. At least, not until you do your part to save the world.\n\nYou gotta to do something. In the words of Ghandi, <i>be the change you want to see in the world.<i>\n\n<span class='bold-this-shit'>What do you do?</span>", "Possess a modicum of self control and exit the app.", 11, 14, 2, "Initiate a pointless facebook war filled with pointless ad hominems", 12, 15, 0, "Defriend anyone and everyone who happens to disagree with your political preferences.", 15, 16, 0),
     new Script("FINDING YOUR VOICE!", "You take a deep breath, preparing for battle.\n\nYou ready your buzzwords, all you have to do is choose your foe open fire.\n\n<span class='bold-this-shit'>Who's your target?</span>", "Working class man of African descent who's probably secretly affiliated with the KKK.", 13, 17, 0, "Caucasion youth leader and well-known community-activist.", 14, 18, 0),
     new Script("FINDING YOUR VOICE!", "\n\n<i>How dare he betray his people and lose us the black vote!</i>\n\nYou call him a racist and a <i>negro.</i> Then you quickly defriend and block. That'll show him!\n\nAfter *exposing* several more <i><span class='bold-this-shit'>Race Traitors</i></span>, you finally arrive at your destination: the Big Apple.$http://i1253.photobucket.com/albums/hh585/heximal7/blackGuy_zpsndxh65jv.jpeg", "Nothing passes the time like dismantling systemic racism. Let's take back America!", 16, 19, 0),
-
     new Script("FINDING YOUR VOICE!", "\nIt's alright to go for the low-hanging fruit every now and then. After all, somebody's gotta do it...\n\nYou start by calling him a sexist and a homophobe.\n\nYou insinuate him to be a child predator.\n\nOnce he's defeated, you decide to pass the time with a long tirade about how everyone's so Islamophobic yet Christianity's exponentially more twisted.\n\nFinally, you get off the train.$http://i1253.photobucket.com/albums/hh585/heximal7/facebook_zpst8mxjff4.png", "Where has my country gone?", 16, 19, 0),
     new Script("FINDING YOUR VOICE!", "Frantically you race to disassociate with all the evil and bigotry that seems to have corrupted your facebook feed.\n\nAunts, uncles, childhood-friends long-since forgotten...\n\n<span class='bold-this-shit'>Oh no!!</span>\n\nYour own father's part of the cult.\n\n<i>HOW COULD HE BE A TRUMP SUPPORTER?</i>?\n\n<span class='bold-this-shit'><i>GASP!</i>\n\nYou know what this means and you gotta cut those ties.\n\n</span>  ", "It's for the Greater Good...", 16, 19, 0),
     new Script("#LOVETRUMPSHATE", "With that little skirmish outa the way, you arrive at the train stop. It's time to make your stand! At first you're a little confused but you quickly get the hang of it. You realize protesting boils down to 2 very  basic rules:<ul><li>When you see someone going about their daily routine and specifically <i>not</i> protesting, all you gotta do is go over and try to fuck up their day.</li><li>When asked why you're protesting, simply shout key phrases and accuse your audience of <i>BIGOTRY.</i></li></ul>\nGee wiz! This sounds kinda fun!\n\nSuddenly you hear someone off in the distance yell something sharp. <i>\"This rat-bastard's gotta a problem with our Peace protest! Let's get him!\"</i>\n\n   ", "Light your torch, sharpen your pitchfork and continue taking back America.", 17, 20, 0),
@@ -70,13 +62,9 @@ function start() {
     new Script("#LOVETRUMPSHATE", "<i>\"You are aware that the President-Elect doesn't get impeached by popular opinion, right? They'd actually have to do something like, say... Horde 650 thousand <span class='bold-this-shit'>classified emails</span> on a private server in their bathroom or something... But just being unpopular among whiny millenials is hardly cause to terminate the position.\"\n\n</i>It seems the wise man has done a very unwise thing today: he attempted to Logic against a Killary supporter. Blasphemy!\n\nAnnnnnnnnnnnnd now you're #triggered. Under SJW doctrine, you know that from this point forward you're not responsible for any of your actions. For some odd reason this mind-state kinda reminds you a little bit of all the sloppy inebriated sex on college campuses and how you couldn't consent cause your head was all trippy and high.\n\nAnyway, you've been pushed to the brink and there's only one thing left to do:", "Brutalize the wise man.", 20, 23, 3),
     new Script("#LOVETRUMPSHATE", "\nYou and your cohorts purge the wise man's life, putting an end to all his hate-speech and nazi rhetoric, thus making the world a better, safer place. And real-talk here, it felt kinda good.\n\nAs you gaze into his cold, dying eyes, you feel a sudden cannibalistic lust wash over you. This must be how Marina Abramovic feels all the time. Compelled by the <span class='bold-this-shit'>Will of the Angel Lucifer</span>, you know what must be done. The only question is the order in which to do it.\n\n    $http://i1253.photobucket.com/albums/hh585/heximal7/killthewiseone_zpsgl0co6cy.png", "Taste his body.", 21, 24, 4, "Sip from his blood.", 23, 25, 4),
     new Script("#SPIRITCOOKING", "\nYou feel compelled to sample the wise man's flesh. In the beginning you're nervous, for there is still a small sliver of humanity left in you. Not to worry though, the feelings pass soon enough.\n\nYou bite into the dying man. At first you nibble. But upon actually tasting him, you're thrown into a frenzy and your nibbles turn to chomps. All this man-eating has left you quite parched and you could really use a drink.$http://i1253.photobucket.com/albums/hh585/heximal7/marina_zpscylcikan.png", "Taste his body.", 22, 24, 2, "Sip from his blood.", 22, 25, 4),
-
     new Script("#SPIRITCOOKING", "\nYou quench your thirst as you drink from the wise man's Life Force. You dowse yourself in the sweet, sweet nector. <i>Mmmmmmm Delicious!</i>\n\nYou find yourself incredibly aroused. You ask yourself why. \n\nMaybe it's the taboo nature of it all. If people ever knew, they'd condemn you for what you've done...\n\nThe contemplation of your newfound <i><a href='http://www.nytimes.com/2016/10/31/us/politics/anthony-weiner-democratic-reaction.html?_r=0' target='_blank'>Forbidden Fruit</a></i> is cut short as you feel a chill in the air and a shadowy figure creeps up behind you!\n\n $http://i1253.photobucket.com/albums/hh585/heximal7/weiner_zpsu9yjofdl.png?t=1479362078", "Who could it be now?", 25, 26, 4),
-
     new Script("#SPIRITCOOKING", "\n\nYou bite into his neck and begin to suck, sapping away the wise man's Life Force, slowly becoming revitalized in the process.\n\nAt last you suck him dry and everything seems clear: <span class='bold-this-shit'>You're the hero America <i>needs</i>, not the hero it deserves.</span>\n\nThe time has come to feast upon his flesh.\n\n $http://i1253.photobucket.com/albums/hh585/heximal7/spiritCooking2_zpsvlcfwaei.png?t=1479362078", "Taste this body.", 24, 24, 4, "Sip from his blood.", 0, 25, 2),
-
     new Script("#SPIRITCOOKING", "\n\nYou gorge upon his withered, now-lifeless corpse and feel the true ecstacy of your carnage. By the time you're done, all that's left is his organs. You figure eating that'd be kinda gross and so you hesitate.\n\nSuddenly you feel an ominous aura permeate the air and a dark, ugly figure lets out a shrill cry just beyond the yonder. You go over to investigate, stuffing the wise man's organs in your napsack for safety.\n\n $http://i1253.photobucket.com/albums/hh585/heximal7/spiritCooking_zpsd3zphslz.png?t=1479362078", "Investigate the vile creature...", 25, 26, 4),
-
     new Script("#SPIRITCOOKING", "\n\nYou get a good look at the creature; the thing vaguely resembles a man. It has long, sharp claws, aged yellow fangs for teeth, black beady eyes and a disproportionate stature. The creature hisses words and they pierce your ears like needles.\n\n\<span class='bold-this-shit'><span class='lucifer'>\"Relax, my child. Do not fear for you are safe now.\"</span></span> The creature moves closer to introduce itself, grazing your lips with his long, terrible fingernails. It continues.\n\n<span class='bold-this-shit'><span class='lucifer'>\"I go by many names. Beelzebub. Lucifer. In a past life I was once the Warlord Muhammad, but in this one I simply go by the name 'John'. John Podesta.\"\n\n</span></span>Fuck, what an honor. This man's your hero. John Podesta extends his arm out so as to shake your hand. You notice his mangled, scare-ridden fingers and they skeeve you the hell out. Still though, it's John Kiddie-Fucking Podesta, live and in the flesh...er, well sorta... $http://i1253.photobucket.com/albums/hh585/heximal7/johnpodesta_zpsr5wqu9dl.png", "Shake the Devil's Hand.", 36, 28, 4),
     new Script("#SPIRITCOOKING", "\n\nWithout question, without hesitation, you obey John Podesta. You scoop out the wise man's heart and consume the last of his spirit.\n\n<i><span class='lucifer'>You feel yourself changing. Transforming. So suddenly and it hurts. It hurts like Hell and you wonder if that's exactly where you're going.\n\nYou feel yourself mutate. Your skin, once soft and vuluptuous has turned ashy and dry. Fangs begin to portrude out your mouth. Your blood turns to venom and your eyes pulse red.</i></span>\n\n<span class='bold-this-shit'>Now more than anything you crave destruction. You realize satiating your bloodlust the only way to make the immense pain you hold now dissipate.</span>\n\n $http://i1253.photobucket.com/albums/hh585/heximal7/monstermeme_zpsssjmxi2m.png", "Resist the petulent urge to act on your feelings", 0, 0, 2, "Fuck with innocent taxpayers.", 27, 35, 3),
     new Script("#SPIRITCOOKING", "\n\nYou rain hellfire upon New York City. There's riots in the streets, people shout in tongues like at a Pentecostal church. You suck the people dry, thus soothing your condition, however only temporary.\n\nIt's all going so well and you start to do some thinking. There's a trope about <i>monsters</i> and how in the movies everyone runs for their life so they won't be transformed.\n\n<i>What if being a monster isn't so bad after all? What if everyone who resists the beast is so caught up in the fight they never stop to wonder if the beast is actually just chilling out, doing its thing, having a real good time?</i>\n\n<span class='bold-this-shit'>Your philosophical musings into the realm of Absurdism are cut short when you're interrupted by a lustrous, incredibly flamboyant figure charging toward you.</span>\n\n    $http://i1253.photobucket.com/albums/hh585/heximal7/milo_zpsvtzzf1bz.png", "Brace yourself.", 28, 36, 4),
@@ -91,13 +79,10 @@ function start() {
     new Script("#SPIRITCOOKING", "<span class='bold-this-shit'><span class='lucifer'>\"I have come to congratulate you on taking the first step on your journey towards becoming a True Democrat. Without any prompt or guidance, you took it upon yourself to consume the spirit of the Old Guard. This is what Radical Leftism is all about.\n\n\"Soon you will be among the ranks of the greats. People who will forever be remembered for their time upon this fair earth.\n\n\"Magnanimous, gregarious people like Rosie O'Donald, Amy Schumer, and Anita Sarkesian. All you gotta do is eat the wise man's heart.\"</span></span></span>\n\nThey say the Devil speaks in a silver tongue and now you understand why. Mesmerized by his words, you have no choice but to slavishly obey.\n\n ", "Take the final step. <a href='https://www.youtube.com/watch?v=KBIdcUxdgo0' target='__blank'>Kali ma!</a>", 26, 27, 4),
     new Script("ROLL CREDITS", "<span style='color:#A40'><i>Hey so there's a lot I wanna say so I'm just gonna get to it. Firstly, thank you so much for playing through to the end, I'm glad you enjoyed it. More importantly, thanks for voting Donald J Trump. (Especially if you're from a Swing State, you're even more fucking awesome!)\n\nSo this is the end of the game.\n\nAs ridiculous as it sounds, this cute little game took well over 25 hours of coding and 35 hours of script writing and editing to make. It was a lot of fun though, I feel pretty accomplished at this fantastically Trollish Endeavor. Feels good to see shit through to the end...\n\nI'd also like to say thank you and recognize a few people for all your help creating this incredible Clusterfuck of Memage OVER-9000. Your support is greatly appreciated!\n<center><span style='color:#A40'\n\nAbe for his technical expertise.\nAna and that amazing head of hers.\nCooper for his script rewrites.\n\nAnd lastly, thank you Tizen for you inspirational trolling and, more importantly, his mentorship once upon a time.</center>\n\n<span style='color:#A40'>One last thing: if you appreciated my little game and would like to see more content like this, Please consider donating whatever you feel this project's worth in terms of the mirth and joy it brought to you.<i> All proceeds will go towards furthering my education in the field of Computer Science.</i>\n\n\n\nAnyway, here's to 8 years of #MAGA.\nIt's time to drain the swamp.\n\n<span id='right'>-Heximal7</span>"),
     new Script("Preface", "<i>Hello and welcome to THE TRUMPENING!\n\nSo before we begin, here's the thing. I don't care all too much about politics. The way I see it, it's a tad rediculous to pin all your hopes and dreams on some elitist politician who promises 'hope' and 'change', but delivers nothing. So I've come to the conclusion that the American political arena is a sham, and I've resigned myself to a life of indifference and laughter when it comes to that sorta thing.\n\nWhat I do care about though, is people being shitheads for absolutely no good reason. Temper tantrums are for children, not adults.\n\nI have a major problem with how Millenials are taking the whole election being, well...democratic and so I gotta to speak up. And rather than break shit and riot and ultimately resolve nothing, I choose to use this game as the medium to voice my outrage.\n\nI present to you a text-based RPG simulating the mind of an SJW libtard in the Wake of the Trumpening. \n\n<center>So please.\nEnjoy the satire, have a laugh, see the meaning.\n\nThe unbelievably corrupt, unironically regressive, \nAuthoritarian Left needs to die!\n\n\n<button class='btn btn-success' onclick='beginGame()'>Let the Nightmare Begin!</button></center>\n\n<div id='right'>-Heximal7</div></i>")  
-
   ];
-
   currScreen = 38;
   renderNewScreen(currScreen);
 }
-
 function loadCredits()
 {
   currScreen = 37;
@@ -105,28 +90,21 @@ function loadCredits()
     hideIt();
   renderNewScreen(currScreen);
 }
-
 function renderNewScreen(index) {
   var prompt = scripts[index].prompt;
   var imgUrl = "";
-
   if (prompt.indexOf("$http") != -1)  {
     imgUrl = prompt.substring(prompt.indexOf("$http") + 1);
     prompt = prompt.substring(0, prompt.indexOf("$http"));
   }
-
   prompt = convertNewlines(prompt);
   var html = "<div class='screen-text'>";
-
   if (scripts[index].header != "") {
     html += "<p style='font-size: 3vw;'><span class='bold-this-shit heading'>" + scripts[index].header + "</span></p>";
   }
-
   if (imgUrl !== "")
     html += "<br><div class='row'><div class='col-xs-2'></div><div class='col-xs-8'><img src='" + imgUrl + "' class='meme'></div> </div>";
-
   html += "<p>" + prompt + "</p>";
-
   if (scripts[index].optionA != null) {
     html += "<p ";
     if (scripts[index].visitedA == 2)
@@ -138,7 +116,6 @@ function renderNewScreen(index) {
     } else
       html += " onclick='changeScreens(1)'><span class='bold-this-shit'><span class='choice'>" + scripts[index].optionA + "</span></span></p>";
   }
-
   if (scripts[index].optionB != null) {
     html += "<p ";
     if (scripts[index].visitedB == 2)
@@ -172,14 +149,11 @@ function renderNewScreen(index) {
     } else
       html += " onclick='changeScreens(4)'><span class='bold-this-shit'><span class='choice'>" + scripts[index].optionD + "</span></span></p>";
   }
-
   if (currScreen != 38 && currScreen!=37)
     html += "<br><p><span class='bold-this-shit'><span style=' font-weight:900;' class='playerStatus'>Player Status: </span><span class='actual-status' style='color: #0c4196'> <span class='bold-this-shit'>" + setPlayerStatus() + "</span></span></p>";
   html += "<br></div>";
   document.getElementById("screen").innerHTML = (html);
-
 }
-
 function setPlayerStatus() {
   switch (score) {
     case (0):
@@ -248,7 +222,6 @@ function setPlayerStatus() {
       return "";
     case (32):
       return "";
-
     case (35):
       return "Shillary's Minion";
     case (36):
@@ -261,28 +234,22 @@ function setPlayerStatus() {
       return "Taken Aback by Nero's Resistance";
     case (40):
       return "Broken and Hysterical";
-
     case (49):
       return "The Patriarchy can suck your dick!";
     case (50):
       return "Not Dark Enough";
   }
 }
-
 function hideIt() {
   hidden=true;
   document.getElementById("donations").innerHTML = "<div class='donation col-xs-10 col-md-10 col-lg-10'style=''><i><span class='bold-this-shit'><span  onclick='unhide()'><form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'><input type='hidden' name='cmd' value='_s-xclick'><input type='hidden' name='hosted_button_id' value='U2QQVRJBGLW8S'><input type='submit' name='submit' class='btn btn-warning' target='_blank' class='bold-this-shit' value='DONATE'>  All proceeds go towards furthering my CS education so I can make more content like this!</p> </form></span></i></div>";
-
 }
-
 function unhide() {
   hidden=false;
   document.getElementById("donations").innerHTML = "<div class='donation col-xs-10 col-md-10 col-lg-10' style=''><p style='text-align:center'><b><br><span class='bold-this-shit'><i>Thanks for your contribution! I appreciate the support!</p></span></i></b></center>";
 }
-
 function convertNewlines(s) {
   var a = 0;
-
   while (a < s.length - 1) {
     if (s.substring(a, a + 1) == "\n") {
       s = s.substring(0, a) + "<br>" + s.substring(a + 1);
@@ -290,13 +257,10 @@ function convertNewlines(s) {
     }
     a++;
   }
-
   return s;
 }
-
 function changeScreens(mapNum) {
   if (mapNum == 1) {
-
     score = scripts[currScreen].scoreA;
     if (scripts[currScreen].visitedA == 1)
       scripts[currScreen].visitedA = 2;
@@ -304,26 +268,22 @@ function changeScreens(mapNum) {
   }
   if (mapNum == 2) {
     score = scripts[currScreen].scoreB;
-
     if (scripts[currScreen].visitedB == 1)
       scripts[currScreen].visitedB = 2;
     currScreen = scripts[currScreen].mapB;
   }
   if (mapNum == 3) {
     score = scripts[currScreen].scoreC;
-
     if (scripts[currScreen].visitedC == 1)
       scripts[currScreen].visitedC = 2;
     currScreen = scripts[currScreen].mapC;
   }
   if (mapNum == 4) {
     score = scripts[currScreen].scoreD;
-
     if (scripts[currScreen].visitedD == 1)
       scripts[currScreen].visitedD = 2;
     currScreen = scripts[currScreen].mapD;
   }
-
   renderNewScreen(currScreen);
 }
 </script>
